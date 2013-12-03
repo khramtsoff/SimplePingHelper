@@ -1,8 +1,24 @@
 Simple Ping Helper
 ==================
 
-How to perform a Ping in an iPhone app
+（Fork自：[SimplePingHelper](https://github.com/chrishulbert/SimplePingHelper)）
 
-For more information, how to use, see:
+###更新了SimplePing 的源码：[SimplePing](https://developer.apple.com/library/mac/samplecode/SimplePing/Listings/SimplePing_m.html#//apple_ref/doc/uid/DTS10000716-SimplePing_m-DontLinkElementID_5)
 
-http://splinter.com.au/how-to-ping-a-server-in-objective-c-iphone
+###增加了ARC
+
+###增加了通过回调来处理事件：
+      [SimplePingHelper ping:@"www.baidu.com"
+                    callback:^(NSNumber *b){
+                  if(b.boolValue)
+                  {
+                    NSLog(@"%@", @"success");
+                    [self log:@"success"];
+                  
+                  }
+                  else
+                  {
+                    NSLog(@"%@", @"failure");
+                    [self log:@"failure"];
+                  }
+      }];

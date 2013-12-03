@@ -47,7 +47,23 @@
 	[self log:@""];
 	[self log:@"-----------"];
 	[self log:@"Tapped Ping"];
-	[SimplePingHelper ping:self.ipAddr.text target:self sel:@selector(pingResult:)];
+//	[SimplePingHelper ping:self.ipAddr.text target:self sel:@selector(pingResult:)];
+
+
+  [SimplePingHelper ping:@"www.baidu.com"
+                callback:^(NSNumber *b){
+                  if(b.boolValue)
+                  {
+                    NSLog(@"%@", @"success");
+                    [self log:@"success"];
+                  
+                  }
+                  else
+                  {
+                    NSLog(@"%@", @"failure");
+                    [self log:@"failure"];
+                  }
+  }];
 }
 
 - (void)pingResult:(NSNumber*)success {

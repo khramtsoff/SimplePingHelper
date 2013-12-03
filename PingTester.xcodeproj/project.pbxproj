@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8D4CB64814C6754200875077 /* SimplePingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CB64714C6754200875077 /* SimplePingHelper.m */; };
+		8D4CB64814C6754200875077 /* SimplePingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CB64714C6754200875077 /* SimplePingHelper.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		8D54207F14C650C600B3689B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D54207E14C650C600B3689B /* UIKit.framework */; };
 		8D54208114C650C600B3689B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D54208014C650C600B3689B /* Foundation.framework */; };
 		8D54208314C650C600B3689B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D54208214C650C600B3689B /* CoreGraphics.framework */; };
@@ -19,7 +19,7 @@
 		8D5420AC14C651E700B3689B /* Radio-Tower@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D5420A914C651E700B3689B /* Radio-Tower@2x.png */; };
 		8D5420AD14C651E700B3689B /* Radio-Tower.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D5420AA14C651E700B3689B /* Radio-Tower.png */; };
 		8D5420AE14C651E700B3689B /* PP Icons.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8D5420AB14C651E700B3689B /* PP Icons.txt */; };
-		8D5420B714C6681000B3689B /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5420B614C6681000B3689B /* SimplePing.m */; };
+		8D5420B714C6681000B3689B /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5420B614C6681000B3689B /* SimplePing.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		8D5420B914C66A3000B3689B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5420B814C66A3000B3689B /* SystemConfiguration.framework */; };
 		8D5420BB14C66A5D00B3689B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5420BA14C66A5D00B3689B /* CFNetwork.framework */; };
 /* End PBXBuildFile section */

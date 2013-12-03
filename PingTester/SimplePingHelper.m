@@ -24,7 +24,11 @@
 // Pings the address, and calls the selector when done. Selector must take a NSnumber which is a bool for success
 + (void)ping:(NSString*)address target:(id)target sel:(SEL)sel {
 	// The helper retains itself through the timeout function
-	[[[[SimplePingHelper alloc] initWithAddress:address target:target sel:sel] autorelease] go];
+	[[[SimplePingHelper alloc] initWithAddress:address target:target sel:sel] go];
+}
+
++ (void)ping:(NSString *)string callback:(void (^)(NSNumber *))callback {
+  [[[SimplePingHelper alloc] initWithAddress:string callback:callback] go];
 }
 
 #pragma mark - Init/dealloc
@@ -32,7 +36,6 @@
 - (void)dealloc {
 	self.simplePing = nil;
 	self.target = nil;
-	[super dealloc];
 }
 
 - (id)initWithAddress:(NSString*)address target:(id)_target sel:(SEL)_sel {
@@ -41,6 +44,15 @@
 		self.simplePing.delegate = self;
 		self.target = _target;
 		self.sel = _sel;
+	}
+	return self;
+}
+
+- (id)initWithAddress:(NSString*)address callback:(void (^)(NSNumber *))callback {
+	if (self = [self init]) {
+		self.simplePing = [SimplePing simplePingWithHostName:address];
+		self.simplePing.delegate = self;
+    self.callback = callback;
 	}
 	return self;
 }
@@ -57,18 +69,33 @@
 // Called on success or failure to clean up
 - (void)killPing {
 	[self.simplePing stop];
-	[[self.simplePing retain] autorelease]; // In case, higher up the call stack, this got called by the simpleping object itself
 	self.simplePing = nil;
 }
 
 - (void)successPing {
 	[self killPing];
-	[target performSelector:sel withObject:[NSNumber numberWithBool:YES]];
+
+  if(self.callback)
+  {
+    self.callback([NSNumber numberWithBool:YES]);
+  }
+  else
+  {
+    [target performSelector:sel withObject:[NSNumber numberWithBool:YES]];
+  }
 }
 
 - (void)failPing:(NSString*)reason {
 	[self killPing];
-	[target performSelector:sel withObject:[NSNumber numberWithBool:NO]];
+
+  if(self.callback)
+  {
+    self.callback([NSNumber numberWithBool:NO]);
+  }
+  else
+  {
+    [target performSelector:sel withObject:[NSNumber numberWithBool:NO]];
+  }
 }
 
 // Called 1s after ping start, to check if it timed out
